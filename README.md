@@ -47,6 +47,7 @@ which I tested on assumptions of the Gauss-Markov theorem, using following tests
 As one of the OLS models (ROA) does not comply with the assumption of normal distribution of residuals, I implemented a robust regression model, using Huber M-estimators. 
 
 ## Setup
-1. To access the used data, please use the following link () and use the 
-
+1. To access the used data, please use the following link () and use the the Excel file called "FINAL (ABGABE)". 
+2. Use the read-in in the R code to implement the data from the excel file into the R workspace.
+3. You then should be able to run the program. Please be aware that you have to manually edit the save space where you want to save the extracts from the STARGAZER package.
 
