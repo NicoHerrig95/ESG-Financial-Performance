@@ -14,7 +14,6 @@ library(gt)
 library(MVN)
 library(Hmisc)
 library(rstatix)
-library(normtest)
 library(MASS)
 library(sfsmisc)
 library(robust)
@@ -23,7 +22,7 @@ library(plotrix)
 library(robust)
 
 
-Excel_IMP <- read_excel("C:/Users/nicoh/OneDrive/Desktop/Bachelor Thesis/FINAL(ABGABE)/Overview FINAL.xlsx") #relating to Excel file "FINAL (ABGABE)
+Excel_IMP <- read_excel("data_overview.xlsx") #relating to Excel file "FINAL (ABGABE)
 View(Excel_IMP)
 ESG <- Excel_IMP$ESG
 ROA <- Excel_IMP$ROA
@@ -102,18 +101,18 @@ boxplot(EARNINGS, main="EARNINGS")
 
 ###-----correlation matrix-----####
 KorrMatROA<- (cor_mat(TABLEMOD1, method = "pearson") %>% cor_mark_significant(cutpoints =   c(0, 0.01, 0.05, 0.1, 1), symbols = c("***", "**" , "*",""))) 
-stargazer(KorrMatROA, type="text", title = "Korrelationsmatrix Modell 1 (ROA)", summary = F, out= "COR_Model1.html", digits = 2) #Ausgabe für Thesis         
+stargazer(KorrMatROA, type="text", title = "Korrelationsmatrix Modell 1 (ROA)", summary = F, out= "COR_Model1.html", digits = 2) #Ausgabe f?r Thesis         
 KorrMatRRV<- (cor_mat(TABLEMOD2, method = "pearson") %>% cor_mark_significant(cutpoints =   c(0, 0.01, 0.05, 0.1, 1), symbols = c("***", "**" , "*",""))) 
-stargazer(KorrMatRRV, type="text", title = "Korrelationsmatrix Modell 2 (RRV)", summary = F, out= "COR_Model2.html", digits = 2) #Ausgabe für Thesis         
+stargazer(KorrMatRRV, type="text", title = "Korrelationsmatrix Modell 2 (RRV)", summary = F, out= "COR_Model2.html", digits = 2) #Ausgabe f?r Thesis         
 
 
 #model 1 - testing of assumptions####
 summary(Reg1)
 KorrMatEXOMOD1<- (cor_mat(tableExoMod1, method = "pearson") %>% cor_mark_significant(cutpoints =   c(0, 0.01, 0.05, 0.1, 1), symbols = c("***", "**" , "*",""))) 
-stargazer(KorrMatEXOMOD1, type="text", title = "--Exogenität Modell 1-- ----------------a", summary = F, out= "EXO1.html") #Ausgabe für Thesis         
+stargazer(KorrMatEXOMOD1, type="text", title = "--Exogenit?t Modell 1-- ----------------a", summary = F, out= "EXO1.html") #Ausgabe f?r Thesis         
 reset(Reg1, power = 2:3)
 
-dfbetasPlots(Reg1, main = "DfBETAS-Werte für Modell 1 (ROA)") #using a threshold of |2| for DfBETAS, according to Cohen
+dfbetasPlots(Reg1, main = "DfBETAS-Werte f?r Modell 1 (ROA)") #using a threshold of |2| for DfBETAS, according to Cohen
  
 cooksd1<- cooks.distance(Reg1) #using a threshold of 1 for Cooks distance, accoring to (Cook, R., & Weisberg, S. (1982). Criticism and Influence Analysis in Regression. Sociological Methodology, 13, 313-361.) 
 plot(cooksd1, pch="*", cex=2, main="Influential Obs by Cooks distance, Modell 1")  # plot cook's distance
@@ -161,11 +160,11 @@ summary(lm(ROA~ESG+LVRG+SIZE+AGE, weights = weightsforHuber))
 summary(Reg2)
 
 KorrMatEXOMOD2<- (cor_mat(tableExoMod2, method = "pearson") %>% cor_mark_significant(cutpoints =   c(0, 0.01, 0.05, 0.1, 1), symbols = c("***", "**" , "*",""))) 
-stargazer(KorrMatEXOMOD2, type="text", title = "--Exogenität Modell 2-- --------------------------a", summary = F, out= "EXO2.html") #Ausgabe für Thesis 
+stargazer(KorrMatEXOMOD2, type="text", title = "--Exogenit?t Modell 2-- --------------------------a", summary = F, out= "EXO2.html") #Ausgabe f?r Thesis 
 
 reset(Reg2, power = 2:3)
 
-dfbetasPlots(Reg2, main = "DfBETAS-Werte für Modell 2 (RRV)")
+dfbetasPlots(Reg2, main = "DfBETAS-Werte f?r Modell 2 (RRV)")
 
 cooksd2<- cooks.distance(Reg2)
 plot(cooksd2, pch="*", cex=2, main="Influential Obs by Cooks distance, Modell 2")  # plot cook's distance
@@ -178,7 +177,7 @@ show(influentialRRV)
 VIF2 <- vif(Reg2)
 stargazer(VIF2, summary = F, out="VIF2.html", type="text", title = "VIF Modell 2", digits = 2)
 
-gqtest(Reg2, alternative ="two.sided") #Goldfeld-Quandt Test: H0 = Homoskedastizität / H1 = Heteroskedastizität
+gqtest(Reg2, alternative ="two.sided") #Goldfeld-Quandt Test: H0 = Homoskedastizit?t / H1 = Heteroskedastizit?t
 bptest(Reg2)
 
 plot(Reg2,2 , main = "Modell 2")
@@ -187,7 +186,7 @@ shapiro.test(rstandard(Reg2))
 stargazer(Reg2, title = "Modell 2 (RRV)", style = "default",out = "RegressionRRV.html")
 
 #table for interpretation of results, using stargazer####
-stargazer(Reg1, Reg1rob, Reg2, title = "Übersicht Regressionsergebnisse", style = "default",out = "ÜbersichtErgebnisse.html")
+stargazer(Reg1, Reg1rob, Reg2, title = "?bersicht Regressionsergebnisse", style = "default",out = "?bersichtErgebnisse.html")
 
 
 
