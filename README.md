@@ -1,5 +1,8 @@
 # ESG-Financial-Performance
 
+## Overview and Note
+This code relates to my Bachelor´s dissertation project, examining the relationship between ESG ratings and financial performance. Written in December 2020, this code is my first-ever data analytics project.
+
 ## Table of contents
 * [General information](#general-information)
 * [Methodology](#methodology)
