@@ -1,9 +1,3 @@
----
-editor_options: 
-  markdown: 
-    wrap: 72
----
-
 # ESG-Financial-Performance
 
 ## Overview and Note
@@ -20,7 +14,7 @@ project.
 -   [Statistical methods](#statistical-methods)
 -   [Setup](#setup)
 
-## General information {#general-information}
+## General information 
 
 This project examines the relationship between the ESG compliance of
 corporations and its financial performance, both from an accounting
@@ -33,7 +27,7 @@ observation period of only one calendar year (2019) due to the
 insufficient availability of ESG data (which is described in detail
 within the dissertation).
 
-## Methodology {#methodology}
+## Methodology 
 
 Financial data was extracted from financial reports and stock pricing
 history, using trustable online resources. For ESG compliance, I used
@@ -80,7 +74,7 @@ As one of the OLS models (ROA) does not comply with the assumption of
 normal distribution of residuals, I implemented a robust regression
 model, using Huber M-estimators.
 
-## Setup {#setup}
+## Setup 
 
 The scraped and pre-cleaned data is saved as **data_overview.xlsx**. The
 R script is saved as **Script_ESG_FinPerformance.R** . Please be aware
